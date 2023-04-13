@@ -14,7 +14,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
 const API_KEY = '15f5c5d31f62.d053a1e13710f9b0814b';
 
-const email = 'sofiachiabudini@gmail.com';
+const email = 'email@domain.com';
 const password = '123456';
 
 function App() {
@@ -54,16 +54,15 @@ function App() {
 
    return (
          <div className='App'>
-            {location.pathname !== '/' && <Nav onSearch={onSearch}/>}
+            {location.pathname !== '/' && <Nav setAccess={setAccess}/>}
             <Routes>
                <Route path='/' element={<Form login={login}/>}/>
-               <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
+               <Route path='/home' element={<Cards characters={characters} onClose={onClose} onSearch={onSearch}/>}/>
                <Route path='/about' element={<About/>}/>
                <Route path='/favorites' element={<Favorites/>}/>
                <Route path='/detail/:id' element={<Detail/>}/>
                <Route path='/*' element={<Error/>}/>
             </Routes>
-            
          </div>
    );
 }

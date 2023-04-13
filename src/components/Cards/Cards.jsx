@@ -1,8 +1,10 @@
 import Card from '../Card/Card.jsx';
+import SearchBar from "../SearchBar/SearchBar.jsx"
 
-export default function Cards({characters, onClose}) {
+export default function Cards({characters, onClose, onSearch}) {
    return (
       <div>
+         <div><SearchBar onSearch={onSearch}/></div>
          {characters.map(({id, name, status, species, gender, origin, image}) =>{
             return(
                <Card
