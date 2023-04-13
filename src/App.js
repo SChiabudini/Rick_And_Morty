@@ -1,11 +1,11 @@
 import './App.css';
-import Cards from './components/Cards/Cards.jsx';
-import Nav from './components/Nav/Nav.jsx';
-import About from './components/About/About.jsx';
-import Detail from './components/Detail/Detail.jsx';
-import Error from './components/Error/Error.jsx';
-import Form from './components/Form/Form.jsx';
-import Favorites from './components/Favorites/Favorites.jsx';
+import Cards from './components/Cards/Cards';
+import Nav from './components/Nav/Nav';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import Error from './components/Error/Error';
+import Landing from './components/Landing/Landing';
+import Favorites from './components/Favorites/Favorites';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ function App() {
          <div className='App'>
             {location.pathname !== '/' && <Nav setAccess={setAccess}/>}
             <Routes>
-               <Route path='/' element={<Form login={login}/>}/>
+               <Route path='/' element={<Landing login={login}/>}/>
                <Route path='/home' element={<Cards characters={characters} onClose={onClose} onSearch={onSearch}/>}/>
                <Route path='/about' element={<About/>}/>
                <Route path='/favorites' element={<Favorites/>}/>

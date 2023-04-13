@@ -1,7 +1,6 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function Nav({setAccess}){
-
+const Nav = ({ setAccess }) => {
     const navigate = useNavigate();
 
     const handleLogOut = () => {
@@ -20,3 +19,5 @@ export default function Nav({setAccess}){
         </div>
     );
 }
+
+export default Nav;

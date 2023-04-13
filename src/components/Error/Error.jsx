@@ -1,8 +1,10 @@
-export default function Error(){
+const Error = () => {
     return(
         <div>
-            <h2>Error 404 - no existe esta página</h2>
-            <p>Te perdiste, por acá no hay nada!</p>
+            <h2>Error 404 - page not found</h2>
+            <p>You're lost, there's nothing here!</p>
         </div>
     )
 }
+
+export default Error;

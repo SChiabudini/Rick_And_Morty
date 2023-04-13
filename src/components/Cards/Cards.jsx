@@ -1,7 +1,7 @@
-import Card from '../Card/Card.jsx';
-import SearchBar from "../SearchBar/SearchBar.jsx"
+import Card from '../Card/Card';
+import SearchBar from '../SearchBar/SearchBar';
 
-export default function Cards({characters, onClose, onSearch}) {
+const Cards = ({ characters, onClose, onSearch }) => {
    return (
       <div>
          <div><SearchBar onSearch={onSearch}/></div>
@@ -17,9 +17,12 @@ export default function Cards({characters, onClose, onSearch}) {
                   origin={origin.name}
                   image={image}
                   onClose={onClose}
+                  showOnClose={true}
                />
             )
          })}
       </div>
    );
 }
+
+export default Cards;

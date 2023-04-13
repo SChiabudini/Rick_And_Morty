@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { addFav, removeFav } from '../Redux/actions';
+import { addFav, removeFav } from '../../redux/actions';
 import { connect } from 'react-redux';
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-function Card({id, name, species, gender, image, onClose, addFav, removeFav, myFavorites }) {
+const Card = ({ id, name, species, gender, image, onClose, showOnClose, addFav, removeFav, myFavorites }) => {
    
    const [isFav, setIsFav] = useState(false);
 
@@ -14,7 +14,7 @@ function Card({id, name, species, gender, image, onClose, addFav, removeFav, myF
       }
       else {
          setIsFav(true);
-         addFav({id, name, species, gender, image, onClose})
+         addFav({ id, name, species, gender, image, onClose })
       }
    }
 
@@ -41,14 +41,11 @@ function Card({id, name, species, gender, image, onClose, addFav, removeFav, myF
                </NavLink>
             </div>
 
-            <div>
-               <h2>Specie: {species}</h2>
-               <h2>Gender: {gender}</h2>
-            </div>
-
-            <div>
-               <button onClick={() => onClose(id)}>X</button>
-            </div>
+            {showOnClose && (
+               <div>
+                  <button onClick={() => onClose(id)}>X</button>
+               </div>
+            )}
             <button onClick={handleFavorite}>{isFav ? '❤️' : '🤍' }</button>
          </div>
       </div>

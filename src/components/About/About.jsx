@@ -1,4 +1,4 @@
-export default function About(){
+const About = () => {
     return(
         <div>
             <img src={process.env.PUBLIC_URL + '/profile.jpg'} alt="Mi perfil" width='200px'/>
@@ -6,5 +6,7 @@ export default function About(){
             <p>...and this is my first App =)</p>
             <p>GitHub user: SChiabudini</p>
         </div>
-    )
+    );
 }
+
+export default About;

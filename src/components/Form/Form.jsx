@@ -1,7 +1,7 @@
-import { useState } from "react";
-import validation from "../Validation/validation.js"
+import { useState } from 'react';
+import validation from '../Validation/validation';
 
-const Form = ({login}) => {
+const Form = ({ login }) => {
 
     const [userData, setUserData] = useState({
         email: '',
