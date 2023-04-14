@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import style from './Nav.module.css';
 
 const Nav = ({ setAccess }) => {
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Nav = ({ setAccess }) => {
     }
 
     return (
-        <div>
+        <div className={style.container}>
             <div>
                 <button><NavLink to="/home">Home</NavLink></button>
                 <button><NavLink to="/about">About</NavLink></button>
