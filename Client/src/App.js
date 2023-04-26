@@ -10,6 +10,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
+const URL = 'http://localhost:3001/rickandmorty/login/';
+
 function App() {
 
    const [characters, setCharacters] = useState([]);
@@ -17,31 +19,36 @@ function App() {
    const [access, setAccess] = useState(false);
    const navigate = useNavigate();
    
-   const login = (userData) => {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`)
-      .then(({ data }) => { //es lo mismo que poner un then con response.data previamente
+   const login = async (userData) => {
+
+      try {
+         const { email, password } = userData;
+         const { data } = await  axios(URL + `?email=${email}&password=${password}`);
+        
          const { access } = data;
          setAccess(access);
          access && navigate('/home');
-      });
+
+      } catch (error) {
+         console.log(error.message)
+      }
    }
 
    useEffect(() => { //esto es útil para no acceder a otra ruta mientras no se hayan ingresado los datos correctos
       !access && navigate('/');
    }, [access, navigate]);
 
-   const onSearch = (id) => {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(response => response.data)
-      .then((data) => {
+   const onSearch = async (id) => {
+      try {
+         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('¡No hay personajes con este ID!');
          }
-      });
+
+      } catch (error) {
+         alert('¡No hay personajes con este ID!');
+      }
    }
 
    const onClose = (id) => {
